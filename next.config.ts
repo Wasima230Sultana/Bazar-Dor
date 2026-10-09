@@ -16,6 +16,17 @@ const nextConfig: NextConfig = {
       },
     },
   },
+     images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        // port: '',
+        // pathname: '/my-bucket/**',
+        // search: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
