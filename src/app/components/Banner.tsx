@@ -32,9 +32,12 @@ const Banner = () => {
                         দামের পরিবর্তন এক জায়গায়।
                     </p>
 
-                    <button className="btn bg-[#05893E] hover:bg-green-700 text-white font-semibold rounded-lg">
-                        সব পণ্য দেখুন
-                    </button>
+                    <a
+    href="#sob-panno"
+    className="btn bg-[#05893E] hover:bg-green-700 text-white font-semibold rounded-lg"
+>
+    সব পণ্য দেখুন
+</a>
                 </div>
 
                 <div className="w-full md:w-5/12 flex justify-center">

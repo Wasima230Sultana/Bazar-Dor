@@ -44,17 +44,19 @@ const AllProducts = async () => {
                         আজ যেসব পণ্যের দাম সবচেয়ে বেশি বেড়েছে
                     </p> */}
 
-                    {risers.length > 0 ? (
+                    {risers.length > 0 && (
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {risers.map((n) => (
                                 <ProductCard key={n.id} {...n} />
                             ))}
                         </div>
-                    ) : (
-                        <p className="text-gray-500">
-                            দাম বৃদ্ধির কোনো তথ্য পাওয়া যায়নি।
-                        </p>
-                    )}
+                    ) 
+                    // : (
+                    //     <p className="text-gray-500">
+                    //         দাম বৃদ্ধির কোনো তথ্য পাওয়া যায়নি।
+                    //     </p>
+                    // )
+                    }
                 </section>
 
                 {/* Section B: Top fallers */}
@@ -67,21 +69,23 @@ const AllProducts = async () => {
                         আজ যেসব পণ্যের দাম সবচেয়ে বেশি কমেছে
                     </p> */}
 
-                    {fallers.length > 0 ? (
+                    {fallers.length > 0 && (
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {fallers.map((n) => (
                                 <ProductCard key={n.id} {...n} />
                             ))}
                         </div>
-                    ) : (
-                        <p className="text-gray-500">
-                            দাম কমার কোনো তথ্য পাওয়া যায়নি।
-                        </p>
-                    )}
+                    )
+                    //  : (
+                    //     <p className="text-gray-500">
+                    //         দাম কমার কোনো তথ্য পাওয়া যায়নি।
+                    //     </p>
+                    // )
+                    }
                 </section>
 
                 {/* Section C: All products */}
-                <section>
+                <section id="sob-panno" className="scroll-mt-6">
                     <h2 className="mb-1 text-2xl font-bold text-gray-900">
                         সব পণ্য
                     </h2>

@@ -43,7 +43,7 @@ const ProductCard = (n: IProductCard) => {
                     </h3>
 
                     <p className="mt-1 text-sm text-gray-500">
-                        {n.unit || 'প্রতি কেজি'}
+                        {/* {n.unit || 'প্রতি কেজি'} */}প্রতি কেজি
                     </p>
                 </div>
             </div>
