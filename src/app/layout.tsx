@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/Navbar";
+import NavWrapped from "./components/NavWrapped";
 
 const notoSerifBengali = Noto_Serif_Bengali({
 
@@ -23,10 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${notoSerifBengali.className}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-       
-           <Navbar></Navbar>
-     
-       
+       <NavWrapped></NavWrapped>     
         <main>   {children} </main>
      <ToastContainer></ToastContainer>
         </body>

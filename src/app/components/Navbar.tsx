@@ -14,33 +14,36 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className='w-full px-4 py-4'>
+        <div className='w-full px-4 py-2'>
             <div className='max-w-7xl mx-auto'>
-                       <div className='flex flex-col items-center justify-between gap-1 sm:flex-row sm:gap-2'>
-                <div className='flex items-center gap-2'>
-                    <Image
-                        className='w-10 h-10 bg-[#05893E] p-1 rounded-lg'
-                        src='/logo-icon.png'
-                        alt='বাজার দর লোগো'
-                        width={50}
-                        height={50}
-                    />
+                <div>
+                     <div className='flex flex-col items-center justify-between gap-1 sm:flex-row sm:gap-2'>
+                    <div className='flex items-center gap-2'>
+                        <Image
+                            className='w-10 h-10 bg-[#05893E] p-1 rounded-lg'
+                            src='/logo-icon.png'
+                            alt='বাজার দর লোগো'
+                            width={50}
+                            height={50}
+                        />
 
-                    <div>
-                        <h2 className='text-2xl font-bold'>বাজার দর</h2>
-                        <span>{date}</span>
+                        <div>
+                            <h2 className='text-2xl font-bold'>বাজার দর</h2>
+                            <span>{date}</span>
+                        </div>
+                    </div>
+
+                    <div className='flex gap-2'>
+                        <button className='btn rounded-lg'>সাইন ইন</button>
+                        <button className='btn bg-[#05893E] text-white rounded-lg'>
+                            সাইন আপ
+                        </button>
                     </div>
                 </div>
-
-                <div className='flex gap-2'>
-                    <button className='btn rounded-lg'>সাইন ইন</button>
-                    <button className='btn bg-[#05893E] text-white rounded-lg'>
-                        সাইন আপ
-                    </button>
                 </div>
+           
             </div>
-            </div>
-     
+
         </div>
     );
 };
