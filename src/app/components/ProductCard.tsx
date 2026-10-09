@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface IProductCard {
     id: string;
     slug: string;
@@ -14,9 +16,9 @@ interface IProductCard {
 const formatPrice = (price: number) =>
     new Intl.NumberFormat('bn-BD').format(price);
 
-const ProductCard = (n: IProductCard) => {
-    const isFlat = n.change.dir === 'flat' || n.change.pct === 0;
-    const isUp = !isFlat && n.change.dir === 'up';
+const ProductCard = (product: IProductCard) => {
+    const isFlat = product.change.dir === 'flat' || product.change.pct === 0;
+    const isUp = !isFlat && product.change.dir === 'up';
 
     const badgeStyle = isFlat
         ? 'bg-gray-100 text-gray-500'
@@ -31,15 +33,16 @@ const ProductCard = (n: IProductCard) => {
             : '▼';
 
     return (
-        <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md">
+        <Link href={`/product/${product.id}`}>
+          <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md">
             <div className="mb-5 flex items-center gap-3">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#F0F5F0] text-3xl">
-                    {n.image || '🛒'}
+                    {product.image || '🛒'}
                 </div>
 
                 <div className="min-w-0">
                     <h3 className="font-bold text-gray-800">
-                        {n.nameBn}
+                        {product.nameBn}
                     </h3>
 
                     <p className="mt-1 text-sm text-gray-500">
@@ -55,16 +58,18 @@ const ProductCard = (n: IProductCard) => {
                     </p>
 
                     <p className="mt-1 text-xl font-bold text-gray-900">
-                        {formatPrice(n.today)} টাকা
+                        {formatPrice(product.today)} টাকা
                     </p>
                 </div>
 
                 <span className={`shrink-0 rounded-full px-2.5 py-1 text-sm font-semibold ${badgeStyle}`}>
                     {changeLabel}{' '}
-                    {formatPrice(Math.abs(n.change.pct))}%
+                    {formatPrice(Math.abs(product.change.pct))}%
                 </span>
             </div>
         </article>
+        </Link>
+      
     );
 };
 

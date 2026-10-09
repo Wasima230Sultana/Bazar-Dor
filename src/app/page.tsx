@@ -1,13 +1,14 @@
+
 import Banner from "./components/Banner";
-import PriceHigh from "./components/AllProducts";
 import { Suspense } from "react";
+import AllProducts from "./components/AllProducts";
 
 export default function Home() {
   return (
     <div>
    <Banner></Banner>
    <Suspense fallback={<span></span>}>
-    <PriceHigh></PriceHigh>
+    <AllProducts></AllProducts>
    </Suspense>
    
     </div>

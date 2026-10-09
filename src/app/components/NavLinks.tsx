@@ -18,9 +18,9 @@ const NavLinks = async () => {
         <div className="w-full px-4">
             <div className='divider'></div>
             <div className="max-w-7xl mx-auto flex justify-start gap-8 py-1">
-                {data.map((n) => (
-                    <Link key={n.id} href={`/${n.slug}`}>
-                        {n.icon} {n.nameBn}
+                {data.map((category) => (
+                    <Link key={category.id} href={`/category/${category.slug}`}>
+                        {category.icon} {category.nameBn}
                     </Link>
                 ))}
             </div>

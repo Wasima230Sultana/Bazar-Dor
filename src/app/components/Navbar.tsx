@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
@@ -19,13 +20,16 @@ const Navbar = () => {
                 <div>
                      <div className='flex flex-col items-center justify-between gap-1 sm:flex-row sm:gap-2'>
                     <div className='flex items-center gap-2'>
-                        <Image
+                        <Link href={'/'}>
+                         <Image
                             className='w-10 h-10 bg-[#05893E] p-1 rounded-lg'
                             src='/logo-icon.png'
                             alt='বাজার দর লোগো'
                             width={50}
                             height={50}
                         />
+                        </Link>
+                       
 
                         <div>
                             <h2 className='text-2xl font-bold'>বাজার দর</h2>

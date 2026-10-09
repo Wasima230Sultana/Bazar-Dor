@@ -46,8 +46,8 @@ const AllProducts = async () => {
 
                     {risers.length > 0 && (
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            {risers.map((n) => (
-                                <ProductCard key={n.id} {...n} />
+                            {risers.map((product) => (
+                                <ProductCard key={product.id} {...product} />
                             ))}
                         </div>
                     ) 
@@ -71,8 +71,8 @@ const AllProducts = async () => {
 
                     {fallers.length > 0 && (
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            {fallers.map((n) => (
-                                <ProductCard key={n.id} {...n} />
+                            {fallers.map((product) => (
+                                <ProductCard key={product.id} {...product} />
                             ))}
                         </div>
                     )
@@ -94,8 +94,8 @@ const AllProducts = async () => {
 মোট {data.length}টি পণ্য দেখানো হচ্ছে                    </p>
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {data.map((n) => (
-                            <ProductCard key={n.id} {...n} />
+                        {data.map((product) => (
+                            <ProductCard key={product.id} {...product} />
                         ))}
                     </div>
                 </section>
