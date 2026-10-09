@@ -32,24 +32,25 @@ const CategoryDetails = async ({ params }: CategoryDetailsProps) => {
     `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
   const data: IProductCard[] = await res.json();
 
   return (
-    <div className="mx-auto max-w-7xl px-4">
+    <div className="mx-auto max-w-7xl px-4 mt-8 mb-42">
       {/* Category name and picture */}
-      {data.length > 0 && (
+      <div className="bg-[#FCFCFC]  rounded-2xl p-5">
+         {data.length > 0 && (
         <h2 className="mb-4 flex items-center gap-2 text-xl font-bold">
           <span>{data[0].image}</span>
           <span>{data[0].categoryNameBn}</span>
         </h2>
       )}
+      </div>
+     <div className="bg-[#FCFCFC]  rounded-2xl p-5 mt-4">
+
+     </div>
 
       {/* Product count in Bangla */}
-      <h3 className="mb-4">
+      <h3 className="my-4">
         মোট {formatBanglaNumber(data.length)}টি পণ্য দেখানো হচ্ছে
       </h3>
 
