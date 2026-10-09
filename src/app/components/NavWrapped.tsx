@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import Navbar from './Navbar';
 import NavLinks from './NavLinks';
+import Marquee from './Marquee';
 
 export default function NavWrapped() {
     return (
@@ -15,6 +16,7 @@ export default function NavWrapped() {
                 }
             >
                 <NavLinks />
+              <Marquee></Marquee> 
             </Suspense>
         </>
     );
