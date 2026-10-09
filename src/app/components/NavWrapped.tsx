@@ -5,7 +5,7 @@ import Marquee from './Marquee';
 
 export default function NavWrapped() {
     return (
-        <>
+        <div className='bg-[#FAFCFA]'>
             <Navbar />
 
             <Suspense
@@ -18,6 +18,6 @@ export default function NavWrapped() {
                 <NavLinks />
               <Marquee></Marquee> 
             </Suspense>
-        </>
+        </div>
     );
 }
