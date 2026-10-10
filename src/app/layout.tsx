@@ -27,8 +27,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
        <NavWrapped></NavWrapped> 
             
         <main>   {children} </main>
-     <ToastContainer></ToastContainer>
+   
      <Footer></Footer>
+       <ToastContainer></ToastContainer>
         </body>
 
     </html>

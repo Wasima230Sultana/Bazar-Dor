@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import UserInfo from './UserInfo';
 
 const Navbar = () => {
     const [date, setDate] = useState("");
@@ -37,12 +38,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className='flex gap-2'>
-                        <button className='btn rounded-lg'>সাইন ইন</button>
-                        <button className='btn bg-[#05893E] text-white rounded-lg'>
-                            সাইন আপ
-                        </button>
-                    </div>
+                   <UserInfo></UserInfo>
                 </div>
                 </div>
            

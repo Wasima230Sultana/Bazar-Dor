@@ -1,9 +1,10 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
-const page = () => {
+const SignUpPage= () => {
     const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault();
         const formData = new FormData(e.target)
@@ -22,11 +23,17 @@ const page = () => {
         }
 
     }
+    const handleGoogleSignUp=async()=>{
+         const data = await authClient.signIn.social({
+    provider: "google",
+  });
+    }
     return (
         <div className='flex flex-col justify-center items-center my-4'>
             <h2 className='font-bold text-4xl '>অ্যাকাউন্ট তৈরি করুন</h2>
             <p>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
-            <form onSubmit={onSubmit}>
+            <div className='bg-white p-4'>
+                 <form onSubmit={onSubmit}>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 my-4">
 
                     <label className="label">নাম</label>
@@ -49,9 +56,27 @@ const page = () => {
                     <div className='divider'>অথবা</div>
                 </fieldset>
             </form>
+              <div className='flex gap-4 items-center justify-center'>
+                <button onClick={handleGoogleSignUp} className='btn'>Google দিয়ে চালিয়ে যান</button>
+                <button className='btn '>GitHub দিয়ে চালিয়ে যান</button>
+
+            </div>
+            <div className='text-center my-3'>
+                <p>অ্যাকাউন্ট আছে?
+                    <Link className='text-green-600 font-bold text-xl' href={'/signin'}> সাইন ইন করুন</Link></p>
+            </div>
+            
+            </div>
+            <Link href={'/'}>
+             <p>← হোম পেজে ফিরে যান</p>
+             </Link>
+          
+          
         </div>
+     
+      
 
     );
 };
 
-export default page;
+export default SignUpPage;
