@@ -3,36 +3,56 @@ import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const SignUpPage= () => {
-    const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.target)
-        const user = Object.fromEntries(formData.entries()) as { name: string, email: string, image: string, password: string, }
-        const { data, error } = await authClient.signUp.email({
-            ...user,
-            callbackURL: '/'
-        })
-        if (data) {
-            console.log(data)
-            redirect('/')
+const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+  e.preventDefault();
 
-        }
-        if (error) {
-            console.log(error)
-        }
+  const formData = new FormData(e.target);
+  const user = Object.fromEntries(formData.entries()) as {
+    name: string;
+    email: string;
+    image: string;
+    password: string;
+  };
 
-    }
-    const handleGoogleSignIn=async()=>{
-         const data = await authClient.signIn.social({
-    provider: "google",
+  const { data, error } = await authClient.signUp.email({
+    ...user,
+    callbackURL: "/",
   });
-    }
-     const handleGitHubSignIn=async()=>{
-         const data = await authClient.signIn.social({
-    provider: "github",
-  });
-    }
+
+  if (data) {
+    toast.success("Successfully signed up!");
+    redirect("/");
+  }
+
+  if (error) {
+    toast.error("Signup failed!");
+  }
+};
+
+const handleGoogleSignIn = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  } catch {
+    toast.error("Google sign-in failed!");
+  }
+};
+
+const handleGitHubSignIn = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+  } catch {
+    toast.error("GitHub sign-in failed!");
+  }
+};
     return (
         <div className='flex flex-col justify-center items-center my-4'>
             <h2 className='font-bold text-4xl '>অ্যাকাউন্ট তৈরি করুন</h2>

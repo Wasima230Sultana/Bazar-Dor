@@ -1,3 +1,4 @@
+import CategoryProductList from "@/app/components/CategoryProductList";
 import ProductCard from "@/app/components/ProductCard";
 import { notFound } from "next/navigation";
 
@@ -31,7 +32,7 @@ const CategoryDetails = async ({ params }: CategoryDetailsProps) => {
   const { categoryId } = await params;
 
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`
+    `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryId}`
   );
 
   const data: IProductCard[] = await res.json();
@@ -51,9 +52,7 @@ if (!data || !Array.isArray(data) || data.length === 0) {
         </h2>
       )}
       </div>
-     <div className="bg-[#FCFCFC]  rounded-2xl p-5 mt-4">
-
-     </div>
+<CategoryProductList products={data}></CategoryProductList>
 
       {/* Product count in Bangla */}
       <h3 className="my-4">
@@ -61,13 +60,13 @@ if (!data || !Array.isArray(data) || data.length === 0) {
       </h3>
 
       {/* Product cards */}
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+      {/* <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
         {data.map((product) => (
           <div key={product.id}>
             <ProductCard {...product} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

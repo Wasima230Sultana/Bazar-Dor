@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
+
 import NavWrapped from "./components/NavWrapped";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({
 
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>   {children} </main>
    
      <Footer></Footer>
-       <ToastContainer></ToastContainer>
+      <Toaster></Toaster>
         </body>
 
     </html>

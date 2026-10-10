@@ -2,38 +2,54 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
+
 
 const SignInPage = () => {
-      const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
-            e.preventDefault();
-            const formData = new FormData(e.target)
-            const user = Object.fromEntries(formData.entries()) as {  email: string, password: string, }
-            const { data, error } = await authClient.signIn.email({
-                ...user,
-                callbackURL: '/'
-            })
-            if (data) {
-                toast.success('Sign in successfully')
-                console.log(data)
-    
-            }
-            if (error) {
-                toast.error(error.message)
-                console.log(error)
-            }
-    
-        }
-        const handleGoogleSignIn=async()=>{
-                 const data = await authClient.signIn.social({
-            provider: "google",
-          });
-            }
-             const handleGitHubSignIn=async()=>{
-                     const data = await authClient.signIn.social({
-                provider: "github",
-              });
-                }
+const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const user = Object.fromEntries(formData.entries()) as {
+    email: string;
+    password: string;
+  };
+
+  const { data, error } = await authClient.signIn.email({
+    ...user,
+    callbackURL: "/",
+  });
+
+  if (data) {
+    toast.success("Successfully signed in!");
+  }
+
+  if (error) {
+    toast.error("Invalid email or password");
+  }
+};
+
+const handleGoogleSignIn = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  } catch {
+    toast.error("Google sign-in failed!");
+  }
+};
+
+const handleGitHubSignIn = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+  } catch {
+    toast.error("GitHub sign-in failed!");
+  }
+};
     return (
         <div className='flex flex-col justify-center items-center my-4'>
             <h2 className='font-bold text-4xl '>সাইন ইন</h2>

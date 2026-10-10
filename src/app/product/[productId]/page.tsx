@@ -45,7 +45,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
   const { productId } = await params;
 
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${productId}`
+    `https://api.abcz.workers.dev/api/bazardor/products/${productId}`
   );
 
 
