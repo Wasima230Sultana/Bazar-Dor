@@ -23,9 +23,14 @@ const SignUpPage= () => {
         }
 
     }
-    const handleGoogleSignUp=async()=>{
+    const handleGoogleSignIn=async()=>{
          const data = await authClient.signIn.social({
     provider: "google",
+  });
+    }
+     const handleGitHubSignIn=async()=>{
+         const data = await authClient.signIn.social({
+    provider: "github",
   });
     }
     return (
@@ -57,8 +62,8 @@ const SignUpPage= () => {
                 </fieldset>
             </form>
               <div className='flex gap-4 items-center justify-center'>
-                <button onClick={handleGoogleSignUp} className='btn'>Google দিয়ে চালিয়ে যান</button>
-                <button className='btn '>GitHub দিয়ে চালিয়ে যান</button>
+                <button onClick={handleGoogleSignIn} className='btn'>Google দিয়ে চালিয়ে যান</button>
+                <button onClick={handleGitHubSignIn} className='btn '>GitHub দিয়ে চালিয়ে যান</button>
 
             </div>
             <div className='text-center my-3'>
