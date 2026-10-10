@@ -28,7 +28,7 @@ const UserInfo = () => {
         <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
           <img
             alt="User avatar"
-            src={user?.image as string}
+            src={user?.image as string || "/avatar.png"}
           />
         </div>
       </div>

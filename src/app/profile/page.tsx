@@ -47,7 +47,7 @@ const ProfilePage = () => {
             <div className="w-20 rounded-full ring-2 ring-primary ring-offset-2">
               <img
                 alt="User avatar"
-                src={user?.image as string}
+                src={user?.image as string || "/avatar.png"}
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ const ProfilePage = () => {
   <div className="my-6 flex justify-center">
     <form onSubmit={handleUpdateProfile} className="w-full max-w-lg">
       <fieldset className="fieldset rounded-box border border-base-300 bg-base-200 p-6 text-left">
-        <legend className="fieldset-legend">প্রোফাইল আপডেট</legend>
+        <h3 className="fieldset-legend text-xl font-bold">তথ্য</h3>
 
         <label className="label">নাম</label>
         <input
@@ -83,7 +83,7 @@ const ProfilePage = () => {
           required
         />
 
-        <button type="submit" className="btn btn-neutral mt-4">
+        <button type="submit" className="btn bg-green-600 text-white text-md mt-4">
           আপডেট করুন
         </button>
       </fieldset>

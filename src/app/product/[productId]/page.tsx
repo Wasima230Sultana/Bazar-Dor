@@ -1,4 +1,5 @@
 import ProductDetailsCard from "@/app/components/ProductDetailsCard";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const instant = false;
@@ -57,6 +58,35 @@ if (!data || !Array.isArray(data.markets)) {
 
   return (
     <main className="mx-auto max-w-7xl space-y-10 px-4 py-8 ">
+       <nav
+      aria-label="Breadcrumb"
+      className="flex flex-wrap items-center gap-2 text-sm sm:text-base"
+    >
+      <Link
+        href="/"
+        className="text-base-content/60 transition-colors hover:text-green-600"
+      >
+        হোম
+      </Link>
+
+  <span className="text-base-content/40">&gt;</span>
+
+  <Link
+    href={`/category/${data.category}`}
+    className="text-base-content/60 transition-colors hover:text-green-600"
+  >
+    {data.categoryNameBn}
+  </Link>
+
+  <span className="text-base-content/40">&gt;</span>
+
+  <span
+    aria-current="page"
+    className="break-words font-semibold text-base-content"
+  >
+    {data.nameBn}
+  </span>
+</nav>
       {/* Product details and price summary */}
       <ProductDetailsCard product={data} />
 

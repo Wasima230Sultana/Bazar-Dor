@@ -1,5 +1,6 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import toast from 'react-hot-toast';
@@ -42,41 +43,86 @@ const handleGoogleSignIn = async () => {
     });
   }
     return (
-        <div className='flex flex-col justify-center items-center my-4'>
-            <h2 className='font-bold text-4xl '>সাইন ইন</h2>
-            <p>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
-            <div className='bg-white p-4'>
-                <form onSubmit={onSubmit}>
-         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 my-4">
+       <div className="my-6 flex min-h-screen flex-col items-center px-4 py-6 sm:my-8 sm:py-8">
+  <div className="mb-6 w-full max-w-lg text-center">
+    <h2 className="text-3xl font-bold sm:text-4xl">
+      সাইন ইন
+    </h2>
+    <p className="mt-3 text-sm leading-6 text-base-content/70 sm:text-base">
+      বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
+    </p>
+  </div>
 
+  <div className="w-full max-w-lg rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm sm:p-6">
+    <form onSubmit={onSubmit}>
+      <fieldset className="fieldset rounded-box w-full border-0 p-0">
+        <label className="label text-sm font-medium">
+          ইমেইল
+        </label>
+        <input
+          type="email"
+          name="email"
+          className="input w-full"
+          placeholder="you@example.com"
+          required
+        />
 
-   <label className="label">ইমেইল</label>
-  <input type="email" name='email' className="input w-md" placeholder="you@example.com" />
+        <label className="label mt-3 text-sm font-medium">
+          পাসওয়ার্ড
+        </label>
+        <input
+          type="password"
+          name="password"
+          className="input w-full"
+          placeholder="কমপক্ষে ৮ অক্ষর"
+          required
+        />
 
- 
- <label className="label">পাসওয়ার্ড</label>
-  <input type="password" name='password' className="input w-md" placeholder="কমপক্ষে ৮ অক্ষর" />
+        <button type="submit" className="btn text-white text-md mt-5 w-full bg-green-600">
+          সাইন ইন
+        </button>
 
+        <div className="divider my-3">অথবা</div>
+      </fieldset>
+    </form>
 
-  <button type='submit' className="btn btn-neutral mt-4">সাইন ইন</button>
-  <div className='divider'>অথবা</div>
-</fieldset>
-        </form>
-            <div className='flex gap-4 items-center justify-center'>
-                <button onClick={handleGoogleSignIn} className='btn'>Google দিয়ে চালিয়ে যান</button>
-                <button onClick={handleGitHubSignIn} className='btn '>GitHub দিয়ে চালিয়ে যান</button>
+    <div className="flex flex-col gap-3 sm:flex-row">
+      <button
+        onClick={handleGoogleSignIn}
+        className="btn min-w-0 flex-1 whitespace-normal"
+      >
+        <Image className='w-4 h-4' src='/Google.png' alt=''width={10} height={5}></Image>
+        Google দিয়ে চালিয়ে যান
+      </button>
 
-            </div>
-            <div className='text-center my-3'>
-                <p>অ্যাকাউন্ট নেই? 
-                    <Link className='text-green-600 font-bold text-xl' href={'/signup'}> সাইন আপ করুন</Link></p>
-            </div>
-            
-            </div>
-            <Link href={'/'}>
-             <p>← হোম পেজে ফিরে যান</p>
-             </Link>
-            </div>
+      <button
+        onClick={handleGitHubSignIn}
+        className="btn min-w-0 flex-1 whitespace-normal"
+      >
+               <Image className='w-4 h-4' src='/Github.png' alt=''width={10} height={5}></Image> GitHub দিয়ে চালিয়ে যান
+      </button>
+    </div>
+
+    <div className="my-5 text-center text-sm sm:text-base">
+      <p>
+        অ্যাকাউন্ট নেই?{" "}
+        <Link
+          className="font-bold text-green-600 hover:text-green-700"
+          href="/signup"
+        >
+          সাইন আপ করুন
+        </Link>
+      </p>
+    </div>
+  </div>
+
+  <Link
+    href="/"
+    className="mt-6 text-sm text-base-content/70 transition-colors hover:text-green-600 sm:text-base"
+  >
+    ← হোম পেজে ফিরে যান
+  </Link>
+</div>
               
        
     );
