@@ -1,4 +1,5 @@
 import ProductDetailsCard from "@/app/components/ProductDetailsCard";
+import { notFound } from "next/navigation";
 
 export const instant = false;
 
@@ -47,12 +48,12 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
     `https://api.api-store.workers.dev/api/bazardor/products/${productId}`
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch product details");
-  }
 
   const data: IProductDetails = await res.json();
 
+if (!data || !Array.isArray(data.markets)) {
+  notFound();
+}
 
   return (
     <main className="mx-auto max-w-7xl space-y-10 px-4 py-8 ">

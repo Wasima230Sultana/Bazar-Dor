@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 interface IMarket {
   market: string;
   division: string;
@@ -36,6 +38,7 @@ const formatBanglaNumber = (num: number) =>
 const ProductDetailsCard = ({
   product,
 }: IProductDetailsCardProps) => {
+
   const difference = product.today - product.yesterday;
 
   const changeColor =

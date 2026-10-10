@@ -5,7 +5,7 @@ import Marquee from './Marquee';
 
 export default function NavWrapped() {
     return (
-        <div className='bg-[#FAFCFA]'>
+        <div className='bg-[#FAFCFA] '>
             <Navbar />
 
             <Suspense

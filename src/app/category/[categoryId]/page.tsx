@@ -1,4 +1,6 @@
 import ProductCard from "@/app/components/ProductCard";
+import { notFound } from "next/navigation";
+
 
 export const instant = false;
 
@@ -33,6 +35,10 @@ const CategoryDetails = async ({ params }: CategoryDetailsProps) => {
   );
 
   const data: IProductCard[] = await res.json();
+
+if (!data || !Array.isArray(data) || data.length === 0) {
+  notFound();
+}
 
   return (
     <div className="mx-auto max-w-7xl px-4 mt-8 mb-42">
