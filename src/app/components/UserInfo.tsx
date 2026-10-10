@@ -17,7 +17,7 @@ const UserInfo = () => {
         <div>
             {
                 user ?
-                  <div className="flex flex-col items-center">
+
   <div className="flex items-center gap-3">
     <div className="dropdown dropdown-end">
       <div
@@ -33,9 +33,9 @@ const UserInfo = () => {
         </div>
       </div>
 
-      <ul
+     <ul
         tabIndex={-1}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3  p-2 shadow"
+        className=" menu menu-sm  dropdown-content bg-base-100 rounded-box z-50 mt-3  p-2 shadow"
       >
         <li className="menu-title">
           <span>{user?.name}</span>
@@ -52,11 +52,14 @@ const UserInfo = () => {
           </button>
         </li>
       </ul>
+
+
     </div>
 
     <h2>{user?.name}</h2>
   </div>
-</div>
+
+
                     :
                     <div className='flex gap-2'>
                         <Link href={'/signin'}>

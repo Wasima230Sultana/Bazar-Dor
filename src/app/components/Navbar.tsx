@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className='w-full  px-4 py-2'>
             <div className='max-w-7xl mx-auto'>
                 <div>
-                     <div className='flex flex-col items-center justify-between gap-1 sm:flex-row sm:gap-2'>
+                     <div className='flex flex-row items-center justify-between gap-1 sm:flex-row sm:gap-2'>
                     <div className='flex items-center gap-2'>
                         <Link href={'/'}>
                          <Image
