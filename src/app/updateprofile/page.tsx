@@ -1,19 +1,26 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const UpdateProfilePage = () => {
     const { data: session } = authClient.useSession()
     const user = session?.user
-    console.log(user)
-    const handleUpdateProfile = async (e: React.SubmitEvent<HTMLElement>) => {
+    const router = useRouter();
+    // console.log(user)
+    const handleUpdateProfile = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.target)
+        const formData = new FormData(e.currentTarget); 
         const newUserData = Object.fromEntries(formData.entries()) as { name: string, image: string, }
-        await authClient.updateUser({
+        const result = await authClient.updateUser({
             ...newUserData,
         })
-
+        if (!result.error) {
+            router.push('/profile');
+            // router.refresh();
+        } else {
+            console.error('Profile update failed:', result.error);
+        }
 
     }
 
@@ -29,7 +36,10 @@ const UpdateProfilePage = () => {
 
                     <label className="label">ImageURL</label>
                     <input type="url" name='image' className="input w-md" placeholder="Image" />
- <button type='submit' className="btn btn-neutral mt-4">update</button>
+
+                    <button type='submit' className="btn btn-neutral mt-4">update</button>
+
+
                 </fieldset>
             </form>
         </div>

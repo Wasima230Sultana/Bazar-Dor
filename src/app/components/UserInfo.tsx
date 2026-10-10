@@ -6,7 +6,7 @@ import Link from "next/link";
 const UserInfo = () => {
     const { data: session } = authClient.useSession()
     const user = session?.user
-    console.log(user)
+    // console.log(user)
     const handleSignout=async()=>{
 await authClient.signOut()
     }
