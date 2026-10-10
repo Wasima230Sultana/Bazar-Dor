@@ -47,7 +47,7 @@ const ProfilePage = () => {
             <div className="w-20 rounded-full ring-2 ring-primary ring-offset-2">
               <img
                 alt="User avatar"
-                src={user?.image }
+                src={user?.image as string}
               />
             </div>
           </div>
