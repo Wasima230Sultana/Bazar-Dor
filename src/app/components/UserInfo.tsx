@@ -15,11 +15,14 @@ await authClient.signOut()
             {
                 user ?
                     <div className="flex flex-col items-center ">
-<div className="avatar">
+                        <Link href={'/profile'}>
+                        <div className="avatar">
   <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
     <img alt="Tailwind-CSS-Avatar-component" src={user?.image as string}/>
   </div>
 </div>
+</Link>
+
 <h2>{user?.name}</h2>
 <button onClick={handleSignout} className="btn btn-error btn-xs">↩ সাইন আউট</button>
                     </div>
