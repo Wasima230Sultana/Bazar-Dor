@@ -26,30 +26,21 @@ const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
 
   if (error) {
     toast.error("Invalid email or password");
+    console.log(error);
   }
 };
-
 const handleGoogleSignIn = async () => {
-  try {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
     });
-  } catch {
-    toast.error("Google sign-in failed!");
-  }
-};
 
-const handleGitHubSignIn = async () => {
-  try {
-    await authClient.signIn.social({
+  };
+
+  const handleGitHubSignIn = async () => {
+ await authClient.signIn.social({
       provider: "github",
-      callbackURL: "/",
     });
-  } catch {
-    toast.error("GitHub sign-in failed!");
   }
-};
     return (
         <div className='flex flex-col justify-center items-center my-4'>
             <h2 className='font-bold text-4xl '>সাইন ইন</h2>
