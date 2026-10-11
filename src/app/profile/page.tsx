@@ -17,7 +17,7 @@ const ProfilePage = () => {
         const handleUpdateProfile = async (e: React.SubmitEvent<HTMLFormElement>) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget); 
-            const newUserData = Object.fromEntries(formData.entries()) as { name: string }
+            const newUserData = Object.fromEntries(formData.entries()) as { name: string, image:string }
             const result = await authClient.updateUser({
                 ...newUserData,
             })
@@ -47,7 +47,7 @@ const ProfilePage = () => {
             <div className="w-20 rounded-full ring-2 ring-primary ring-offset-2">
               <img
                 alt="User avatar"
-                src={user?.image as string || "/avatar.png"}
+                src={user?.image  || "/avatar.png"}
               />
             </div>
           </div>
@@ -82,7 +82,14 @@ const ProfilePage = () => {
           className="input w-full"
           required
         />
-
+         <label className="label mt-2">Image URL</label>
+            <input
+              type="url"
+              name="image"
+              defaultValue={user?.image || ""}
+              className="input w-full"
+              placeholder="https://example.com/image.jpg"
+            />
         <button type="submit" className="btn bg-green-600 text-white text-md mt-4">
           আপডেট করুন
         </button>

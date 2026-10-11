@@ -30,18 +30,53 @@ const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
     console.log(error);
   }
 };
+// const handleGoogleSignIn = async () => {
+//     await authClient.signIn.social({
+//       provider: "google",
+//     });
+
+//   };
+
+//   const handleGitHubSignIn = async () => {
+//  await authClient.signIn.social({
+//       provider: "github",
+//     });
+//   }
+
 const handleGoogleSignIn = async () => {
+  try {
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: "/",
     });
 
-  };
-
-  const handleGitHubSignIn = async () => {
- await authClient.signIn.social({
-      provider: "github",
-    });
+   toast.success("Connecting to Google...", {
+  duration: 2500,
+  position: "top-center",
+});
+  } catch (error) {
+    console.error("Google sign-in failed:", error);
+    toast.error("Google sign-in failed. Please try again.");
   }
+};
+
+const handleGitHubSignIn = async () => {
+  try {
+    await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+
+     toast.success("Connecting to GitHub...", {
+  duration: 2500,
+  position: "top-center",
+});
+  } catch (error) {
+    console.error("GitHub sign-in failed:", error);
+    toast.error("GitHub sign-in failed. Please try again.");
+  }
+};
+
     return (
        <div className="my-6 flex min-h-screen flex-col items-center px-4 py-6 sm:my-8 sm:py-8">
   <div className="mb-6 w-full max-w-lg text-center">
